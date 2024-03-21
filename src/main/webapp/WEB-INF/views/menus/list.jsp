@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>    
-    
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,7 @@
 	      <td>${ menu.menu_id    }</td>
 	      <td>${ menu.menu_name  }</td>
 	      <td>${ menu.menu_seq   }</td>	      
-	      <td><a href="/Menus/Delete?menu_id=MENU03">삭제</a></td>	      
+	      <td><a href="/Menus/Delete?menu_id=${menu.menu_id }">삭제</a></td>	      
 	      <td><a href="/Menus/">수정</a></td>
 	    </tr>
 	    </c:forEach>
@@ -76,11 +77,3 @@
 	</main>
 </body>
 </html>
-
-
-
-
-
-
-
-

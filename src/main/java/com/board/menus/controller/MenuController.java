@@ -47,21 +47,29 @@ public class MenuController {
 	                          String menu_name,
 	                          int menu_seq ) { :인식안됨(error)
          menu_id 를 찾을 수 없으므로 Vo 로 작업해야한다} */
-	
-	public   String   write( MenuVo  menuVo ) {   
+	@RequestMapping("/Write")
+	public   String   write( MenuVo  menuVo) {   
 		// 넘어온 데이터를 db 에 저장하고		
 		menuMapper.insertMenu( menuVo );
-		// menuMapper.insertMenu(menu_id, menu_name, menu_seq); // error
+//	    menuMapper.insertMenu(menu_id, menu_name, menu_seq); // error
+//		List<MenuVo> menuList = menuMapper.getMenuList();
+//		model.addAttribute("menuList", menuList);
 		
-		return "list";    // menus/list.jsp  
+		return "redirect:/Menus/List";    // menus/list.jsp  
 	}
 	
 	//메뉴 삭제 /Menus/Delete?menu_id=MENU03
 	@RequestMapping("/Delete")
 	public String delete( MenuVo menuVo) {
 		
+		// MENU03 을 삭제
+		menuMapper.deleteMenu( menuVo );
 		
-		return "menus/delete";
+//		List<MenuVo> menuList = menuMapper.getMenuList();
+//		model.addAttribute("menuList", menuList);
+		
+		//이동할 파일 redirect:
+		return "redirect:/Menus/List";
 	}
 	
 	
