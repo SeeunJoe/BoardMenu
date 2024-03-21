@@ -53,7 +53,15 @@ public class MenuController {
 		menuMapper.insertMenu( menuVo );
 		// menuMapper.insertMenu(menu_id, menu_name, menu_seq); // error
 		
-		return "menus/list";    // menus/list.jsp  
+		return "list";    // menus/list.jsp  
+	}
+	
+	//메뉴 삭제 /Menus/Delete?menu_id=MENU03
+	@RequestMapping("/Delete")
+	public String delete( MenuVo menuVo) {
+		
+		
+		return "menus/delete";
 	}
 	
 	

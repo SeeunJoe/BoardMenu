@@ -16,7 +16,8 @@
           )   
   </insert> 
   
-  <select id="getMenuList">
+  <select id="getMenuList"
+          resultType ="com.board.menus.domain.MenuVo">
   
   	SELECT     MENU_ID, MENU_NAME, MENU_SEQ
   	 FROM      MENUS
