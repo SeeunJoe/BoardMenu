@@ -106,7 +106,26 @@ public class MenuController {
 	//	return "<script>alert('삭제되었습니다')</script>";
 	}
 //------------------------------------------------------------------
+	//menu수정
+	//  /Menus/UpdateForm?menu_id=${menu.menu_id}
+	@RequestMapping("/UpdateForm")
+	public String updateForm(MenuVo menuVo, Model model ){
+		
+		//수정할 데이터를 조회한다.
 	
+		
+		//조회한 내용을 모델에 담는다
+		
+		return "menus/update";
+	}
+	@RequestMapping("/Update")
+	public String update(MenuVo menuVo) {
+		//수정
+		
+		//수정 후 조회
+		
+		return "redirect:/Menus/List";
+	}
 	
 }
 
