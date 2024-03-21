@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.board.menus.domain.MenuVo;
@@ -31,7 +30,7 @@ public class MenuController {
 		
 		return "menus/list";
 	}
-	
+//-----------------------------------------------------------------------------------	
 	
 	// 메뉴 입력받는 화면  /Menus/WriteForm
 	//@RequestMapping("/Menus/WriteForm")
@@ -39,6 +38,8 @@ public class MenuController {
 	public   String   writeForm() {
 		return "menus/write";  // /WEB-INF/views/ + menus/write + .jsp`
 	}
+	
+//-------------------------------------------------------------------------------------
 		
 	/* 메뉴 저장
 	 /Menus/Write?menu_id=MENU02&menu_name=JSP&menu_seq=2
@@ -58,6 +59,23 @@ public class MenuController {
 		
 		return "redirect:/Menus/List";    // menus/list.jsp  
 	}
+	
+	
+//   /Menus/WriteForm2
+	@RequestMapping("/WriteForm2")
+	public String writeForm2() {
+		
+		return "menus/write2";
+	}
+	
+	@RequestMapping("/Write2")
+	public String write2(MenuVo menuVo) {
+		//저장
+		menuMapper.insertMenuByName(menuVo);
+		//조회로 이동
+		return "redirect:/Menus/List";
+	}
+//-------------------------------------------------------------------------------------
 	
 /*	<메뉴삭제 Ver.1>
     /Menus/Delete?menu_id=MENU03
@@ -87,6 +105,7 @@ public class MenuController {
 		
 	//	return "<script>alert('삭제되었습니다')</script>";
 	}
+//------------------------------------------------------------------
 	
 	
 }

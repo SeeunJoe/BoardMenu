@@ -15,6 +15,13 @@
             #{ menu_seq  }
           )   
   </insert> 
+  <insert id ="insertMenuByName">
+    INSERT  INTO  MENUS  ( MENU_ID,  MENU_NAME,  MENU_SEQ  )
+      VALUES   (( SELECT  'MENU' || TRIM( TO_CHAR( MAX ( SUBSTR( MENU_ID, 5, 2) ) + 1, '00') )  FROM   MENUS  ) ,
+       #{ menu_name  },  
+       ( SELECT NVL(MAX(MENU_SEQ), 0) + 1 FROM MENUS ) 
+ )
+  </insert>
   
   <select id="getMenuList"
           resultType ="com.board.menus.domain.MenuVo">
@@ -32,6 +39,7 @@
   WHERE  MENU_ID = #{ menu_id }
   
   </delete>
+  
   
 </mapper>
 
