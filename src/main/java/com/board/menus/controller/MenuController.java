@@ -12,9 +12,10 @@ import com.board.menus.domain.MenuVo;
 import com.board.menus.mapper.MenuMapper;
 
 @Controller
-@RequestMapping("/Menus")
+@RequestMapping("/Menus") //.jsp에서 /Meuns있으면 다 여기로 온다.
 public class MenuController {
 	
+//------------------------------------list------------------------------------------------
 	@Autowired
 	private  MenuMapper  menuMapper;
 	
@@ -30,7 +31,7 @@ public class MenuController {
 		
 		return "menus/list";
 	}
-//-----------------------------------------------------------------------------------	
+//------------------------writeForm -> write -------------------------------------	
 	
 	// 메뉴 입력받는 화면  /Menus/WriteForm
 	//@RequestMapping("/Menus/WriteForm")
@@ -39,7 +40,7 @@ public class MenuController {
 		return "menus/write";  // /WEB-INF/views/ + menus/write + .jsp`
 	}
 	
-//-------------------------------------------------------------------------------------
+
 		
 	/* 메뉴 저장
 	 /Menus/Write?menu_id=MENU02&menu_name=JSP&menu_seq=2
@@ -59,7 +60,8 @@ public class MenuController {
 		
 		return "redirect:/Menus/List";    // menus/list.jsp  
 	}
-	
+
+//-----------------------writeForm2 -> write2------------------------------------------
 	
 //   /Menus/WriteForm2
 	@RequestMapping("/WriteForm2")
@@ -110,19 +112,21 @@ public class MenuController {
 	//  /Menus/UpdateForm?menu_id=${menu.menu_id}
 	@RequestMapping("/UpdateForm")
 	public String updateForm(MenuVo menuVo, Model model ){
+		System.out.println("menuVo" + menuVo);
+		String menu_id = menuVo.getMenu_id();
 		
-		//수정할 데이터를 조회한다.
-	
+		//수정할 데이터를 menu_id 조회
+		MenuVo menu = menuMapper.getMenu( menu_id );
 		
 		//조회한 내용을 모델에 담는다
-		
+		model.addAttribute("menu", menu);
+
 		return "menus/update";
 	}
+	
 	@RequestMapping("/Update")
-	public String update(MenuVo menuVo) {
-		//수정
+	public String update(MenuVo menuVo, Model model) {
 		
-		//수정 후 조회
 		
 		return "redirect:/Menus/List";
 	}

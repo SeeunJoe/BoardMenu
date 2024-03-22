@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.board.menus.domain.MenuVo;
 
+import lombok.NonNull;
+
 @Mapper
 public interface MenuMapper {
 
@@ -22,6 +24,10 @@ public interface MenuMapper {
 	void insertMenuByName(MenuVo menuVo);
 
 	void updateMenu(MenuVo menuVo);
+
+	MenuVo getMenu( String menu_id);
+
+
 
 }
 
