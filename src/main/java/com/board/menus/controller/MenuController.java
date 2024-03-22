@@ -124,9 +124,12 @@ public class MenuController {
 		return "menus/update";
 	}
 	
+	//Menus/Update?menu_id=MENU01&menu_name=자바&menu_seq=1
 	@RequestMapping("/Update")
-	public String update(MenuVo menuVo, Model model) {
+	public String update(MenuVo menuVo) {
 		
+		//수정 updateMenu->menuMapper.xml에서 정의한다
+		menuMapper.updateMenu(menuVo);
 		
 		return "redirect:/Menus/List";
 	}

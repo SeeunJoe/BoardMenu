@@ -48,7 +48,7 @@
 	 </tr>
 	 <tr>
 	   <td colspan="2">
-	    <input type="submit" value="추가" />
+	    <input type="submit" value="수정" />
 	    <input type="button" value="목록" id="goList" />
 	   </td>
 	 </tr>
